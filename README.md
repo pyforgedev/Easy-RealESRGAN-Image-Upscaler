@@ -1,111 +1,323 @@
 # 🚀 Easy-RealESRGAN-Image-Upscaler
 
-[![Open In Kaggle](https://img.shields.io/badge/Open%20in-Kaggle-blue?logo=kaggle)](https://www.kaggle.com/code/pyrisforge/easy-realesrgan-image-upscaler)
-[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
-[![Real-ESRGAN](https://img.shields.io/badge/Real--ESRGAN-v0.3.0-brightgreen)](https://github.com/xinntao/Real-ESRGAN)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<p align="center">
 
-Proyek ini menyediakan antarmuka sederhana untuk melakukan **upscaling gambar** menggunakan **Real-ESRGAN** di lingkungan Kaggle. Dengan berbagai pilihan kualitas, model, dan faktor pembesaran, Anda dapat meningkatkan resolusi gambar umum maupun anime dengan hasil yang memuaskan.
+<a href="https://www.kaggle.com/code/pyrisforge/easy-realesrgan-image-upscaler">
+    <img src="https://img.shields.io/badge/Open%20in-Kaggle-blue?logo=kaggle" />
+</a>
 
----
+<a href="https://www.python.org/downloads/">
+    <img src="https://img.shields.io/badge/python-3.12+-blue.svg" />
+</a>
 
-## ✨ Fitur Utama
+<a href="https://github.com/xinntao/Real-ESRGAN">
+    <img src="https://img.shields.io/badge/Real--ESRGAN-v0.3.0-brightgreen" />
+</a>
 
-* **4 Tingkat Kualitas**: Tersedia opsi `ultra`, `high`, `balanced`, dan `fast` untuk menyesuaikan antara kecepatan dan detail hasil.
-* **2 Mode Gambar**: Mendukung mode `general` untuk foto/umum dan `anime` untuk ilustrasi/animasi.
-* **Faktor Pembesaran**: Pilihan skala perbesaran 2x atau 4x.
-* **Manajemen Data**: Dukungan upload gambar tunggal maupun banyak gambar sekaligus melalui interface interaktif.
-* **Face Enhancement**: Perbaikan detail wajah secara otomatis menggunakan integrasi GFPGAN pada mode kualitas tertinggi.
-* **Otomasi Model**: Sistem otomatis mengunduh model yang diperlukan dan memverifikasi integritas file sebelum dijalankan.
-* **Kompatibilitas Modern**: Sudah menyertakan patch otomatis untuk berjalan mulus di Python 3.12+.
+<a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+</a>
 
----
+</p>
 
-## 📋 Daftar Isi
-
-- [💻 Persyaratan Sistem](#-persyaratan-sistem)
-- [⚙️ Instalasi & Persiapan](#%EF%B8%8F-instalasi--persiapan)
-- [📁 Struktur Kode](#-struktur-kode)
-- [📌 Penjelasan Parameter](#-penjelasan-parameter)
-- [⚠️ Mengatasi Masalah Umum](#%EF%B8%8F-mengatasi-masalah-umum)
-- [☕ Support Me](#-support-me)
-- [📚 Referensi](#-referensi)
-- [⚖️ Lisensi](#%EF%B8%8F-lisensi)
+<p align="center">
+<b>Open-Source AI Image Upscaler for Kaggle & Colab</b><br>
+Powered by Real-ESRGAN with Gradio UI, batch processing, adaptive tile fallback, Cloudflare public access, and GPU optimization.
+</p>
 
 ---
 
-## 💻 Persyaratan Sistem
+# ✨ Features
 
-* **Kaggle Notebook**: Wajib menggunakan lingkungan Kaggle dengan akses GPU aktif (P100 atau T4).
-* **Koneksi Internet**: Diperlukan untuk mengunduh model dan dependensi pada saat inisialisasi awal.
-* **Alokasi VRAM**: Untuk gambar beresolusi sangat besar, disarankan menggunakan mode kualitas dengan mekanisme `tile`.
-
----
-
-## ⚙️ Instalasi & Persiapan
-
-Proses persiapan dilakukan secara otomatis melalui sel-sel notebook yang mencakup:
-1. **Repository Cloning**: Mengambil source code resmi Real-ESRGAN.
-2. **Dependency Install**: Pemasangan paket `basicsr`, `gfpgan`, `facexlib`, dan pustaka pendukung lainnya.
-3. **Compatibility Patch**: Perbaikan otomatis pada library BasicSR agar kompatibel dengan versi Python terbaru.
-4. **Model Verification**: Pengunduhan bobot model (weights) secara otomatis ke folder yang ditentukan.
+## 🖼️ AI Image Upscaling
+- High-quality image upscaling using **Real-ESRGAN**
+- Supports both:
+  - **General / Photo**
+  - **Anime / Cartoon**
+- Scale options:
+  - **2x**
+  - **4x**
 
 ---
 
-## 📁 Struktur Kode
+## ⚡ Quality Presets
 
-Proyek ini dirancang secara modular agar mudah dipelajari atau dikembangkan kembali:
-* **`QualityConfig`**: Kelas sentral yang menyimpan preset konfigurasi, daftar model, dan ukuran tile untuk setiap tingkat kualitas.
-* **`RealESRGANUpscaler`**: Engine utama yang menangani inisialisasi model, pemrosesan gambar, dan penanganan memori GPU.
-* **`Data Manager Interface`**: Komponen UI interaktif menggunakan `ipywidgets` untuk memudahkan pengguna mengelola file input tanpa menyentuh kode.
-* **Visualisasi**: Sistem perbandingan berdampingan (side-by-side) untuk melihat perbedaan sebelum dan sesudah proses upscale.
+Choose between multiple quality modes depending on your GPU performance and desired output quality.
 
----
-
-## 📌 Penjelasan Parameter
-
-| Parameter | Opsi | Deskripsi |
-| :--- | :--- | :--- |
-| **image_type** | `general`, `anime` | Tentukan kategori gambar untuk hasil optimal (mode `anime` menjaga garis tetap halus). |
-| **scale** | `2`, `4` | Target perbesaran resolusi dari ukuran asli. |
-| **quality** | `ultra`, `high`, `balanced`, `fast` | Mengatur keseimbangan antara detail tekstur, perbaikan wajah, dan kecepatan proses. |
-
----
-
-## ⚠️ Mengatasi Masalah Umum
-
-* **`[Errno 2] No such file or directory`**: Pastikan Anda telah mengunggah gambar di bagian Data Manager atau memasukkan path dataset Kaggle dengan benar.
-* **Out of Memory (OOM)**: Jika GPU kehabisan memori saat memproses gambar besar, coba turunkan tingkat kualitas ke `balanced` atau `fast`.
-* **Proses Terhenti**: Pastikan sesi Kaggle Anda memiliki koneksi internet dan GPU Accelerator sudah dinyalakan pada menu *Settings* notebook.
-
----
-
-## ☕ Support Me
-
-Dukungan Anda sangat berarti untuk membantu keberlanjutan riset teknologi dan pengembangan project kreatif lainnya di masa depan.
-
-| Platform | Link Dukungan |
+| Preset | Description |
 | :--- | :--- |
-| **Trakteer** | [trakteer.id/pyforge](https://trakteer.id/pyforge) |
-| **Saweria** | [saweria.co/pyforge](https://saweria.co/pyforge) |
-| **SociaBuzz** | [sociabuzz.com/pyforge](https://sociabuzz.com/pyforge) |
-| **PayPal** | [paypal.me/Masyura](https://www.paypal.com/paypalme/Masyura) |
+| **Ultra** | Highest quality with FP32 precision and face enhancement |
+| **High** | High-quality balanced mode |
+| **Balanced** | Recommended default for Kaggle T4/P100 |
+| **Fast** | Lowest VRAM usage and fastest processing |
 
 ---
 
-## 📚 Referensi
+## 📦 Batch Processing System
 
-* **Real-ESRGAN Core**: [xinntao/Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN)
-* **Face Restoration**: [TencentARC/GFPGAN](https://github.com/TencentARC/GFPGAN)
-* **Framework**: [XPixelGroup/BasicSR](https://github.com/XPixelGroup/BasicSR)
+- Multi-image batch processing
+- ZIP upload support
+- Automatic image validation
+- Resume processing system
+- Failed image tracking
+- Runtime logging system
+- Auto ZIP export after processing
+
+---
+
+## 🧠 Adaptive Tile Fallback
+
+Automatic VRAM-safe fallback system:
+
+```text
+600 → 400 → 200 → 100
+```
+
+If GPU memory fails during inference, the engine automatically retries with a smaller tile size instead of crashing the entire batch process.
 
 ---
 
-## ⚖️ Lisensi
+## 🌐 Cloudflare Public Access
 
-Project ini dilisensikan di bawah **MIT License**. Anda bebas menggunakan, mengubah, dan mendistribusikan kode ini untuk keperluan pribadi maupun komersial.
+Built-in Cloudflare Tunnel integration allows you to:
 
-Copyright (c) 2026 **masyuraC7**
+- Launch Gradio publicly from Kaggle
+- Access the UI from any device
+- Share the application without local deployment
+
+No external deployment platform required.
 
 ---
-Dibuat dengan ❤️ oleh **masyuraC7** – Full Stack Programmer & Creative Content Creator.
+
+## 🎨 Interactive Gradio UI
+
+Modern interface with:
+
+- Drag & Drop Upload
+- ZIP Extraction
+- Kaggle Dataset Import
+- Google Drive Import
+- Interactive Galleries
+- Batch Upscale Playground
+- ZIP Download Export
+
+---
+
+## 🔍 Smart Image Validation
+
+Automatically:
+- detects invalid images
+- fixes extension mismatches
+- removes corrupted files
+- validates supported formats
+
+Supported formats:
+- JPG
+- JPEG
+- PNG
+- WEBP
+- BMP
+- TIFF
+
+---
+
+# 🖼️ Preview
+
+> Add your UI screenshots here for better project presentation.
+
+## Example Suggested Sections
+
+- Main Interface
+- Batch Processing
+- Before vs After Comparison
+- Cloudflare Public Access
+- ZIP Export
+
+---
+
+# ⚡ Quick Start
+
+## 1. Open the Kaggle Notebook
+
+👉 https://www.kaggle.com/code/pyrisforge/easy-realesrgan-image-upscaler
+
+---
+
+## 2. Enable GPU
+
+Go to:
+
+```text
+Settings → Accelerator → GPU
+```
+
+Recommended:
+- Tesla T4
+- Tesla P100
+
+---
+
+## 3. Run All Cells
+
+The notebook will automatically:
+
+- clone Real-ESRGAN
+- install dependencies
+- download models
+- apply Python compatibility patches
+- launch the Gradio application
+- generate a public Cloudflare URL
+
+---
+
+## 4. Open the Public URL
+
+After launch:
+
+```text
+🚀 Easy-RealESRGAN is Online!
+```
+
+Click the generated Cloudflare URL to access the application.
+
+---
+
+# 📂 Workflow
+
+```text
+Upload Images
+    ↓
+Select Quality & Scale
+    ↓
+Start Batch Upscaling
+    ↓
+Automatic Processing
+    ↓
+Auto ZIP Export
+    ↓
+Download Results
+```
+
+---
+
+# ⚙️ Supported Modes
+
+| Category | Options |
+| :--- | :--- |
+| **Image Type** | General / Anime |
+| **Scale** | 2x / 4x |
+| **Quality Preset** | Ultra / High / Balanced / Fast |
+| **Input Sources** | Upload / ZIP / Kaggle / Google Drive |
+| **Output Export** | Gallery / ZIP Download |
+
+---
+
+# 🧠 Project Architecture
+
+## Core Components
+
+| Component | Description |
+| :--- | :--- |
+| **QualityConfig** | Centralized preset & model configuration |
+| **RealESRGANUpscaler** | Main inference engine |
+| **Batch Processing Engine** | Multi-image processing system |
+| **Resume System** | Continue processing after interruption |
+| **Cloudflare Launcher** | Public Gradio access |
+| **Logging System** | Structured runtime & error logging |
+
+---
+
+# 🚀 Optimizations
+
+This project includes multiple runtime optimizations for Kaggle & Colab environments.
+
+## ✅ GPU Optimizations
+- Automatic VRAM cleanup
+- Adaptive tile retry system
+- FP16 optimization support
+- Safe inference retry handling
+
+---
+
+## ✅ Stability Improvements
+- Structured logging
+- Timeout protection
+- Image validation
+- Memory cleanup
+- Runtime-safe subprocess execution
+
+---
+
+## ✅ Batch Reliability
+- Resume processing system
+- Failed image tracking
+- Automatic ZIP generation
+- Corrupted file filtering
+
+---
+
+# ⚠️ Known Limitations
+
+- Kaggle runtime sessions may disconnect after long inactivity.
+- Very large images may still require lower quality presets depending on available VRAM.
+- Cloudflare quick tunnels are temporary and may occasionally expire.
+- Public Cloudflare URLs are regenerated every runtime session.
+
+---
+
+# 📚 Core Technologies
+
+| Technology | Purpose |
+| :--- | :--- |
+| **Real-ESRGAN** | AI image upscaling |
+| **GFPGAN** | Face restoration |
+| **BasicSR** | Super-resolution framework |
+| **Gradio** | Interactive UI |
+| **Cloudflared** | Public tunnel access |
+| **PyTorch** | Deep learning inference |
+
+---
+
+# 🙌 Credits
+
+## Real-ESRGAN
+https://github.com/xinntao/Real-ESRGAN
+
+## GFPGAN
+https://github.com/TencentARC/GFPGAN
+
+## BasicSR
+https://github.com/XPixelGroup/BasicSR
+
+---
+
+# ☕ Support the Project
+
+If this project has been helpful to you, please consider supporting its development.  
+Your support helps maintain and improve the project, fund future research, and continue building better open-source AI tools for the community.
+
+Every contribution truly means a lot and helps push this project further. 🚀
+
+| Platform | Link |
+| :--- | :--- |
+| **Trakteer** | https://trakteer.id/pyforge |
+| **Saweria** | https://saweria.co/pyforge |
+| **SociaBuzz** | https://sociabuzz.com/pyforge |
+| **PayPal** | https://www.paypal.com/paypalme/Masyura |
+
+---
+
+# ⚖️ License
+
+This project is licensed under the **MIT License**.
+
+You are free to use, modify, and distribute this project, provided that the original copyright and license notice are included.
+
+Copyright (c) 2026 **MasyuraC7**
+
+---
+
+<p align="center">
+Made with ❤️ by <b>MasyuraC7</b><br>
+Fullstack Programmer • AI Enthusiast • Open-Source Creator
+</p>
