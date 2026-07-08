@@ -33,7 +33,7 @@ order matters within a notebook.
 ## Releases
 
 Versioning is local-driven via **git-cliff** (no npm/package.json here). Config
-is `git-cliff.toml`; the `Makefile` wraps the steps:
+is `cliff.toml`; the `Makefile` wraps the steps:
 
 - `make changelog V=0.2.0` — regenerate `CHANGELOG.md` up to tag `v0.2.0`.
 - `make release V=0.2.0` — update changelog, commit `chore: release v0.2.0`,
