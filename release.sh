@@ -12,4 +12,5 @@ git-cliff --tag "$V" -o CHANGELOG.md
 git add CHANGELOG.md
 git commit -m "chore: release v$V"
 git tag "v$V"
-git push --follow-tags
+git push
+git push origin "v$V"
