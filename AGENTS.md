@@ -56,4 +56,4 @@ changelog by these same types but does **not** auto-compute the version.
 - Default language is **English** (this is an open-source project for a global
   audience): documentation, READMEs, and code comments are written in English;
   code cells are in English.
-- MIT licensed, author `masyuraC7`.
+- MIT licensed, author `pyforgedev`.

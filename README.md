@@ -313,11 +313,11 @@ This project is licensed under the **MIT License**.
 
 You are free to use, modify, and distribute this project, provided that the original copyright and license notice are included.
 
-Copyright (c) 2026 **MasyuraC7**
+Copyright (c) 2026 **pyforgedev**
 
 ---
 
 <p align="center">
-Made with ❤️ by <b>MasyuraC7</b><br>
+Made with ❤️ by <b>pyforgedev</b><br>
 Fullstack Programmer • AI Enthusiast • Open-Source Creator
 </p>
