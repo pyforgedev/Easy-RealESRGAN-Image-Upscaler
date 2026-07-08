@@ -1,7 +1,5 @@
 # Copilot Instructions
 
-Follow conventional commit rules for every commit in this repository.
-
 ## Commit rules
 
 - One logical change per commit — do not mix types.
