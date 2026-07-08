@@ -32,6 +32,9 @@ order matters within a notebook.
 
 ## Releases
 
+> Note: this project does **not** use `release-it` (there is no npm/package.json
+> here). Releases are handled entirely by **git-cliff** as described below.
+
 Versioning is local-driven via **git-cliff** (no npm/package.json here). Config
 is `cliff.toml`; the `Makefile` wraps the steps:
 
@@ -50,5 +53,7 @@ changelog by these same types but does **not** auto-compute the version.
 
 ## Notes
 
-- READMEs are written in Indonesian; code cells are in English.
+- Default language is **English** (this is an open-source project for a global
+  audience): documentation, READMEs, and code comments are written in English;
+  code cells are in English.
 - MIT licensed, author `masyuraC7`.

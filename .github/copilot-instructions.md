@@ -27,4 +27,3 @@ Changelog-only types (no version bump): `chore:`, `docs:`, `refactor:`,
 - Never use `feat:` for config files/examples — use `chore:` instead.
 - Reference issues in the footer: `Closes #123`.
 - `BREAKING CHANGE:` must be a footer, separated by a blank line from the body.
-- Never commit, push, or release without explicit user request.
