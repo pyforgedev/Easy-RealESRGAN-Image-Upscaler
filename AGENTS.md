@@ -39,6 +39,9 @@ is `cliff.toml`; the `Makefile` wraps the steps:
 - `make release V=0.2.0` — update changelog, commit `chore: release v0.2.0`,
   tag `v0.2.0`, and `git push --follow-tags`.
 
+`make` and `git-cliff` must be on `PATH` (e.g. `~/.local/bin`). If `make` is
+unavailable, `release.sh <version>` mirrors the `release` target.
+
 Version bumps follow conventional commits: `feat:` → minor, `fix:` → patch,
 `BREAKING CHANGE:` → major (see `.github/copilot-instructions.md`).
 
