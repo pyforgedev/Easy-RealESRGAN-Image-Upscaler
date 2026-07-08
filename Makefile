@@ -11,3 +11,6 @@ release: changelog
 	git tag v$(V)
 	git push
 	git push origin v$(V)
+	@if command -v gh >/dev/null 2>&1; then \
+		gh release create "v$(V)" --title "v$(V)" --notes-file CHANGELOG.md; \
+	fi
