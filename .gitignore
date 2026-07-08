@@ -1,0 +1,3 @@
+# Ignore generated audit outputs, keep the directory tracked
+docs/audit/*
+!docs/audit/.gitkeep
