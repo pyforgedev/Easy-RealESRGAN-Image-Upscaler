@@ -36,14 +36,17 @@ Versioning is local-driven via **git-cliff** (no npm/package.json here). Config
 is `cliff.toml`; the `Makefile` wraps the steps:
 
 - `make changelog V=0.2.0` — regenerate `CHANGELOG.md` up to tag `v0.2.0`.
-- `make release V=0.2.0` — update changelog, commit `chore: release v0.2.0`,
-  tag `v0.2.0`, and `git push --follow-tags`.
+- `make release V=0.2.0` — regenerate `CHANGELOG.md`, commit
+  `chore: release v0.2.0`, tag `v0.2.0`, push commit + tag, and (if `gh` is
+  installed and authed) create the GitHub Release using that version's notes.
 
 `make` and `git-cliff` must be on `PATH` (e.g. `~/.local/bin`). If `make` is
 unavailable, `release.sh <version>` mirrors the `release` target.
 
-Version bumps follow conventional commits: `feat:` → minor, `fix:` → patch,
-`BREAKING CHANGE:` → major (see `.github/copilot-instructions.md`).
+Choose `V` manually following the conventional-commit bump rules:
+`feat:` → minor, `fix:` → patch, `BREAKING CHANGE:` → major
+(see `.github/copilot-instructions.md`). git-cliff groups commits into the
+changelog by these same types but does **not** auto-compute the version.
 
 ## Notes
 

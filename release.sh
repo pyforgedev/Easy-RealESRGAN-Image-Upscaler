@@ -17,5 +17,6 @@ git push origin "v$V"
 
 # Create a GitHub Release if `gh` CLI is available (needs auth/token)
 if command -v gh >/dev/null 2>&1; then
-  gh release create "v$V" --title "v$V" --notes-file CHANGELOG.md
+  git-cliff --latest --strip header > /tmp/release-notes-$V.md
+  gh release create "v$V" --title "v$V" --notes-file /tmp/release-notes-$V.md
 fi
