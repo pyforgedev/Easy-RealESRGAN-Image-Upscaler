@@ -9,11 +9,55 @@ Don't look for or invent `install`/`lint`/`test`/`build` commands — they don't
 Three independent notebooks, each run top-to-bottom ("Run all"); cell execution
 order matters within a notebook.
 
-- `easy-realesrgan-image-upscaler.ipynb` — main project. Real-ESRGAN image
-  upscaler. **Kaggle + GPU** runtime, **Python 3.12+**. On first run it clones the
-  upstream `xinntao/Real-ESRGAN` repo, patches BasicSR for 3.12 compatibility, and
-  downloads model weights (needs internet). Core classes: `QualityConfig`,
-  `RealESRGANUpscaler`; UI is `ipywidgets`.
+### easy-realesrgan-image-upscaler.ipynb (main project)
+
+Real-ESRGAN image upscaler. **Kaggle + GPU** runtime, **Python 3.12+**. On first
+run it clones the upstream `xinntao/Real-ESRGAN` repo, patches BasicSR for 3.12
+compatibility, and downloads model weights (needs internet). Core engine classes:
+`QualityConfig`, `RealESRGANUpscaler` (defined in Section 1.7); UI is **Gradio**
+(Section 2).
+
+The notebook is organized into three top-level sections, each introduced by a
+`#` markdown header followed by one or more code cells. Section 1 was deliberately
+split into **10 small, logically-grouped code cells** (each preceded by a
+`## 📦 1.x` header) so the ~1800 lines of pipeline logic are easy to maintain,
+attribute errors to, and scale. **Editing rule: only move cell boundaries — never
+merge these back into one monolith cell.**
+
+Cell layout (top-to-bottom):
+
+- Intro markdown (title + Kaggle link).
+- `# 📦 1. Full Pipeline — Environment, Models, Core Engine, Workers & Batch`
+  - `## 📦 1.1 Imports & Logger` — stdlib/3rd-party imports; `logger`
+    (`logging.getLogger("EasyRealESRGAN")`, `StreamHandler` only).
+  - `## ⚙️ 1.2 Configuration & Constants` — `CFG` dict, `INPUT_DIR`/`OUTPUT_DIR`
+    (incl. `enable_keep_alive`/`keep_alive_interval`), `MODEL_REGISTRY`, constants.
+  - `## 🖥️ 1.3 GPU Detection & Runtime Validation` — `detect_available_gpus()`,
+    `validate_runtime_environment()`, `initialize_worker_directories()`.
+  - `## 🔧 1.4 Runtime Optimization & Dependencies` — `optimize_runtime_environment()`,
+    `install_dependencies()`, `apply_python_compatibility_patch()`, `setup_repository()`.
+  - `## 🚀 1.5 Environment Initialization` — `print_runtime_summary()`,
+    `initialize_environment()` **and its top-level call**.
+  - `## 📥 1.6 Model Download & Setup` — `validate_existing_model()`,
+    `download_model()`, `setup_models()`, `if __name__ == "__main__": setup_models()`.
+  - `## ⚡ 1.7 Core Upscaler Engine` — `QualityConfig`, `RealESRGANUpscaler`,
+    global `upscaler_engine = RealESRGANUpscaler()`, `upscale_image()`.
+  - `## 👷 1.8 GPU Worker Manager` — `GPUWorker`, `GPUWorkerManager`,
+    global `gpu_worker_manager = GPUWorkerManager()` (+ `initialize_workers()`/
+    `perform_health_check()` calls).
+  - `## 💾 1.9 Data Manager` — resume DB (thread-safe), image validation, gallery,
+    file ops, import handlers (`handle_upload`, etc.).
+  - `## 🔄 1.10 Batch Engine` — `BatchTask`, `ParallelBatchProcessor`,
+    `run_batch_upscale()`.
+- `# 🎨 2. Gradio Interface` — Gradio UI (`build_ui()` + helpers), 1 code cell.
+- `# 🌐 3. Cloudflare Tunnel Launcher` — `_cleanup_stale_tunnels()` (reaps orphaned
+  `cloudflared` from prior runs), cloudflared binary download, `keep_runtime_alive()`
+  (daemon thread, stopped via `keep_alive_stop` `threading.Event` in
+  `launch_application()`'s `finally`), `launch_application()` +
+  `if __name__: launch_application()`.
+
+### ImageForge / PromptForge
+
 - `ImageForge/ImageForge_—_Batch_Image_Converter.ipynb` — PNG↔JPG batch converter.
   **Google Colab**, **Python 3.10+**, Gradio UI exposed via a Cloudflare tunnel.
   Standalone; not part of the upscaler pipeline.
@@ -68,6 +112,13 @@ runtimes**. All code must adhere to Kaggle's constraints:
 - **No daemons**: no `systemd`, no background services, no long-lived threads
   that outlive the cell. Subprocess workers must be joined/killed before the
   cell exits.
+  - **Exception — keep-alive thread**: `keep_runtime_alive()` (Section 3) is an
+    intentional `daemon=True` thread that prevents Kaggle from idling the session.
+    It is long-lived *by design* but is cleanly stopped: `launch_application()`'s
+    `finally` block sets `keep_alive_stop` (a `threading.Event`) and `join()`s the
+    thread, so it never survives a Stop. **Do not** make it non-daemon, and **do
+    not** remove the stop signal — otherwise the heartbeat logs persist after the
+    notebook is stopped.
 - **Idempotent cells**: each cell must be safe to re-run ("Run all" from top).
   Use `if not path.exists()` guards for downloads, and clean up stale state
   (kill orphan subprocesses, reset globals) before re-initializing.

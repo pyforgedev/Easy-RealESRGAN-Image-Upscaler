@@ -8,99 +8,103 @@
 
 ---
 
-PromptForge adalah tool untuk membersihkan, mengelompokkan, dan mengekspor prompt secara otomatis berdasarkan **aspect ratio**.
+PromptForge is a tool for cleaning, grouping, and exporting prompts automatically based on **aspect ratio**.
 
-Tool ini dirancang untuk mempercepat workflow batch generation pada berbagai AI image generator.
+Designed to speed up batch generation workflows across various AI image generators.
 
 ---
 
 ## ✨ Key Capabilities
 
-- 📥 Multiple input modes  
-  - Paste text  
-  - Upload `.txt` file  
+- 📥 Multiple input modes
+  - Paste text
+  - Upload `.txt` file
 
-- 🧹 Prompt cleaning  
-  - Remove duplicate prompts  
-  - Normalize whitespace  
+- 🧹 Prompt cleaning
+  - Remove duplicate prompts
+  - Normalize whitespace
 
-- ⚙️ Smart processing  
-  - Auto suffix injection  
-  - Ratio-based prompt grouping  
+- ⚙️ Smart processing
+  - Auto suffix injection
+  - Ratio-based prompt grouping
 
-- 📦 Batch exporting  
-  - Export per aspect ratio  
-  - Optional ZIP packaging  
-  - Automatic download  
+- 📦 Batch exporting
+  - Export per aspect ratio
+  - Optional ZIP packaging
+  - Automatic download
 
 ---
 
 ## 🧩 Interface Setup
 
-Bagian ini membangun **interactive interface** menggunakan `ipywidgets`.
+This section builds the **interactive interface** using `ipywidgets`.
 
-Interface memungkinkan pengguna untuk:
+The interface allows users to:
 
-- Memilih mode input
-- Mengatur opsi pemrosesan
-- Mengontrol output file
+- Select input mode
+- Configure processing options
+- Control output files
 
-Komponen utama yang dibuat:
+Main components created:
 
-- Input mode selector  
-- Text input area  
-- File upload system  
-- Processing options  
-- Execution button  
+- Input mode selector
+- Text input area
+- File upload system
+- Processing options
+- Execution button
 - Status display
-
-## 🧠 Core Processing Engine
-
-Bagian ini berisi logika utama untuk memproses prompt.
-
-Pipeline yang dijalankan:
-
-1. Membaca input text
-2. Mendeteksi **aspect ratio**
-3. Membersihkan prompt
-4. Menambahkan suffix (opsional)
-5. Menghapus duplicate prompt
-6. Mengelompokkan prompt berdasarkan ratio
-7. Menyimpan hasil ke file
-
-Parsing dilakukan menggunakan **regular expressions** untuk memastikan struktur prompt tetap konsisten.
-
-## 📦 Export System
-
-Prompt hasil pemrosesan akan diekspor secara otomatis.
-
-Format output:
-
-- Satu file per aspect ratio
-- Nama file berbasis timestamp
-- Folder batch otomatis dibuat
-
-Opsional:
-
-- Download otomatis
-- ZIP packaging
-- Blank line separation
-
-## ▶️ Usage Guide
-
-Ikuti langkah berikut untuk menggunakan PromptForge:
-
-1️⃣ Pilih **Input Mode**
-
-- `Paste Text`
-atau  
-- `Upload File`
 
 ---
 
-2️⃣ Atur opsi pemrosesan
+## 🧠 Core Processing Engine
 
-Opsional:
+This section contains the main logic for processing prompts.
+
+Pipeline steps:
+
+1. Read input text
+2. Detect **aspect ratio**
+3. Clean prompts
+4. Add suffix (optional)
+5. Remove duplicate prompts
+6. Group prompts by ratio
+7. Save results to file
+
+Parsing uses **regular expressions** to ensure prompt structure stays consistent.
+
+---
+
+## 📦 Export System
+
+Processed prompts are exported automatically.
+
+Output format:
+
+- One file per aspect ratio
+- Timestamp-based filenames
+- Automatic batch folder creation
+
+Optional features:
+
+- Auto download
+- ZIP packaging
+- Blank line separation
+
+---
+
+## ▶️ Usage Guide
+
+Follow these steps to use PromptForge:
+
+### 1. Select Input Mode
+
+- `Paste Text`
+  or
+- `Upload File`
+
+### 2. Configure Processing Options
+
+Optional settings:
 
 - Remove duplicate prompts
 - Add suffix
@@ -108,48 +112,51 @@ Opsional:
 - Auto download
 - Auto zip files
 
+### 3. Click the Button
+
+`PROCESS PROMPTS`
+
+### 4. Output Files
+
+- Created automatically
+- Downloaded automatically (if enabled)
+
 ---
-
-3️⃣ Klik tombol:
-
-**PROCESS PROMPTS**
-
----
-
-4️⃣ File hasil akan:
-
-- Dibuat otomatis
-- Diunduh otomatis (jika aktif)
 
 ## 📁 Output Structure
 
-Setiap batch akan menghasilkan folder:
-- Batch_YYYYMMDD_HHMMSS/
-  - BatchPrompt_16x9_TIMESTAMP.txt
-  - BatchPrompt_1x1_TIMESTAMP.txt
-  - BatchPrompt_9x16_TIMESTAMP.txt
-  - Batch_YYYYMMDD_HHMMSS.zip
+Each batch produces a folder:
+
+```text
+Batch_YYYYMMDD_HHMMSS/
+  BatchPrompt_16x9_TIMESTAMP.txt
+  BatchPrompt_1x1_TIMESTAMP.txt
+  BatchPrompt_9x16_TIMESTAMP.txt
+  Batch_YYYYMMDD_HHMMSS.zip
+```
 
 ---
 
-## ☕ Support Me
+## ☕ Support
 
-Dukungan Anda sangat berarti untuk membantu keberlanjutan riset teknologi dan pengembangan project kreatif lainnya di masa depan.
+Your support helps sustain technology research and future creative open-source projects.
 
-| Platform | Link Dukungan |
+| Platform | Link |
 | :--- | :--- |
-| **Trakteer** | [trakteer.id/pyforge](https://trakteer.id/pyforge) |
-| **Saweria** | [saweria.co/pyforge](https://saweria.co/pyforge) |
-| **SociaBuzz** | [sociabuzz.com/pyforge](https://sociabuzz.com/pyforge) |
-| **PayPal** | [paypal.me/Masyura](https://www.paypal.com/paypalme/Masyura) |
+| **Trakteer** | <https://trakteer.id/pyforge> |
+| **Saweria** | <https://saweria.co/pyforge> |
+| **SociaBuzz** | <https://sociabuzz.com/pyforge> |
+| **PayPal** | <https://www.paypal.com/paypalme/Masyura> |
 
 ---
 
-## ⚖️ Lisensi
+## ⚖️ License
 
-Project ini dilisensikan di bawah **MIT License**. Anda bebas menggunakan, mengubah, dan mendistribusikan kode ini untuk keperluan pribadi maupun komersial.
+This project is licensed under the **MIT License**.
+You are free to use, modify, and distribute this code for personal or commercial purposes.
 
-Copyright (c) 2026 **masyuraC7**
+Copyright (c) 2026 **pyforgedev**
 
 ---
-Dibuat dengan ❤️ oleh **masyuraC7** – Full Stack Programmer & Creative Content Creator.
+
+Made with ❤️ by **pyforgedev** — Full Stack Programmer & Creative Content Creator.

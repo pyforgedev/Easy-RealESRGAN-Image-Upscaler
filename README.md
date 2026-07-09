@@ -3,33 +3,35 @@
 <p align="center">
 
 <a href="https://www.kaggle.com/code/pyrisforge/easy-realesrgan-image-upscaler">
-    <img src="https://img.shields.io/badge/Open%20in-Kaggle-blue?logo=kaggle" />
+    <img src="https://img.shields.io/badge/Open%20in-Kaggle-blue?logo=kaggle" alt="Open in Kaggle" />
 </a>
 
 <a href="https://www.python.org/downloads/">
-    <img src="https://img.shields.io/badge/python-3.12+-blue.svg" />
+    <img src="https://img.shields.io/badge/python-3.12+-blue.svg" alt="Python 3.12+" />
 </a>
 
 <a href="https://github.com/xinntao/Real-ESRGAN">
-    <img src="https://img.shields.io/badge/Real--ESRGAN-v0.3.0-brightgreen" />
+    <img src="https://img.shields.io/badge/Real--ESRGAN-v0.3.0-brightgreen" alt="Real-ESRGAN v0.3.0" />
 </a>
 
 <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License" />
 </a>
 
 </p>
 
 <p align="center">
 <b>Open-Source AI Image Upscaler for Kaggle & Colab</b><br>
-Powered by Real-ESRGAN with Gradio UI, batch processing, adaptive tile fallback, Cloudflare public access, and GPU optimization.
+Powered by Real-ESRGAN with Gradio UI, batch processing, adaptive tile fallback,
+Cloudflare public access, and GPU optimization.
 </p>
 
 ---
 
-# ✨ Features
+## ✨ Features
 
-## 🖼️ AI Image Upscaling
+### 🖼️ AI Image Upscaling
+
 - High-quality image upscaling using **Real-ESRGAN**
 - Supports both:
   - **General / Photo**
@@ -40,9 +42,10 @@ Powered by Real-ESRGAN with Gradio UI, batch processing, adaptive tile fallback,
 
 ---
 
-## ⚡ Quality Presets
+### ⚡ Quality Presets
 
-Choose between multiple quality modes depending on your GPU performance and desired output quality.
+Choose between multiple quality modes depending on your GPU performance and
+desired output quality.
 
 | Preset | Description |
 | :--- | :--- |
@@ -53,7 +56,7 @@ Choose between multiple quality modes depending on your GPU performance and desi
 
 ---
 
-## 📦 Batch Processing System
+### 📦 Batch Processing System
 
 - Multi-image batch processing
 - ZIP upload support
@@ -65,7 +68,7 @@ Choose between multiple quality modes depending on your GPU performance and desi
 
 ---
 
-## 🧠 Adaptive Tile Fallback
+### 🧠 Adaptive Tile Fallback
 
 Automatic VRAM-safe fallback system:
 
@@ -73,11 +76,12 @@ Automatic VRAM-safe fallback system:
 600 → 400 → 200 → 100
 ```
 
-If GPU memory fails during inference, the engine automatically retries with a smaller tile size instead of crashing the entire batch process.
+If GPU memory fails during inference, the engine automatically retries with a
+smaller tile size instead of crashing the entire batch process.
 
 ---
 
-## 🌐 Cloudflare Public Access
+### 🌐 Cloudflare Public Access
 
 Built-in Cloudflare Tunnel integration allows you to:
 
@@ -89,29 +93,29 @@ No external deployment platform required.
 
 ---
 
-## 🎨 Interactive Gradio UI
+### 🎨 Interactive Gradio UI
 
 Modern interface with:
 
 - Drag & Drop Upload
 - ZIP Extraction
-- Kaggle Dataset Import
-- Google Drive Import
 - Interactive Galleries
 - Batch Upscale Playground
 - ZIP Download Export
 
 ---
 
-## 🔍 Smart Image Validation
+### 🔍 Smart Image Validation
 
 Automatically:
+
 - detects invalid images
 - fixes extension mismatches
 - removes corrupted files
 - validates supported formats
 
 Supported formats:
+
 - JPG
 - JPEG
 - PNG
@@ -121,11 +125,11 @@ Supported formats:
 
 ---
 
-# 🖼️ Preview
+## 🖼️ Preview
 
 > Add your UI screenshots here for better project presentation.
 
-## Example Suggested Sections
+### Example Suggested Sections
 
 - Main Interface
 - Batch Processing
@@ -135,15 +139,15 @@ Supported formats:
 
 ---
 
-# ⚡ Quick Start
+## ⚡ Quick Start
 
-## 1. Open the Kaggle Notebook
+### 1. Open the Kaggle Notebook
 
-👉 https://www.kaggle.com/code/pyrisforge/easy-realesrgan-image-upscaler
+👉 <https://www.kaggle.com/code/pyrisforge/easy-realesrgan-image-upscaler>
 
 ---
 
-## 2. Enable GPU
+### 2. Enable GPU
 
 Go to:
 
@@ -152,12 +156,13 @@ Settings → Accelerator → GPU
 ```
 
 Recommended:
+
 - Tesla T4
 - Tesla P100
 
 ---
 
-## 3. Run All Cells
+### 3. Run All Cells
 
 The notebook will automatically:
 
@@ -170,7 +175,7 @@ The notebook will automatically:
 
 ---
 
-## 4. Open the Public URL
+### 4. Open the Public URL
 
 After launch:
 
@@ -182,7 +187,7 @@ Click the generated Cloudflare URL to access the application.
 
 ---
 
-# 📂 Workflow
+## 📂 Workflow
 
 ```text
 Upload Images
@@ -200,21 +205,21 @@ Download Results
 
 ---
 
-# ⚙️ Supported Modes
+## ⚙️ Supported Modes
 
 | Category | Options |
 | :--- | :--- |
 | **Image Type** | General / Anime |
 | **Scale** | 2x / 4x |
 | **Quality Preset** | Ultra / High / Balanced / Fast |
-| **Input Sources** | Upload / ZIP / Kaggle / Google Drive |
+| **Input Sources** | Upload / ZIP |
 | **Output Export** | Gallery / ZIP Download |
 
 ---
 
-# 🧠 Project Architecture
+## 🧠 Project Architecture
 
-## Core Components
+### Core Components
 
 | Component | Description |
 | :--- | :--- |
@@ -225,13 +230,29 @@ Download Results
 | **Cloudflare Launcher** | Public Gradio access |
 | **Logging System** | Structured runtime & error logging |
 
+### 📑 Notebook Structure
+
+The main notebook (`easy-realesrgan-image-upscaler.ipynb`) is organized into
+three top-level sections, each split into small, logically-grouped cells for
+easy maintenance and scaling:
+
+| Section | Cells | Contents |
+| :--- | :--- | :--- |
+| **1. Full Pipeline** | 📦 1.1 – 1.10 | Imports & logger, config & constants, GPU detection & validation, runtime optimization & dependencies, environment initialization, model download & setup, core upscaler engine, GPU worker manager, data manager, batch engine |
+| **2. Gradio Interface** | 🎨 | Interactive UI (`build_ui()`) |
+| **3. Cloudflare Tunnel** | 🌐 | Stale-tunnel cleanup, `keep_runtime_alive()`, `launch_application()` |
+
+See `AGENTS.md` for the full cell-by-cell breakdown.
+
 ---
 
-# 🚀 Optimizations
+## 🚀 Optimizations
 
-This project includes multiple runtime optimizations for Kaggle & Colab environments.
+This project includes multiple runtime optimizations for Kaggle & Colab
+environments.
 
-## ✅ GPU Optimizations
+### ✅ GPU Optimizations
+
 - Automatic VRAM cleanup
 - Adaptive tile retry system
 - FP16 optimization support
@@ -239,7 +260,8 @@ This project includes multiple runtime optimizations for Kaggle & Colab environm
 
 ---
 
-## ✅ Stability Improvements
+### ✅ Stability Improvements
+
 - Structured logging
 - Timeout protection
 - Image validation
@@ -248,7 +270,8 @@ This project includes multiple runtime optimizations for Kaggle & Colab environm
 
 ---
 
-## ✅ Batch Reliability
+### ✅ Batch Reliability
+
 - Resume processing system
 - Failed image tracking
 - Automatic ZIP generation
@@ -256,16 +279,17 @@ This project includes multiple runtime optimizations for Kaggle & Colab environm
 
 ---
 
-# ⚠️ Known Limitations
+## ⚠️ Known Limitations
 
 - Kaggle runtime sessions may disconnect after long inactivity.
-- Very large images may still require lower quality presets depending on available VRAM.
+- Very large images may still require lower quality presets depending on
+  available VRAM.
 - Cloudflare quick tunnels are temporary and may occasionally expire.
 - Public Cloudflare URLs are regenerated every runtime session.
 
 ---
 
-# 📚 Core Technologies
+## 📚 Core Technologies
 
 | Technology | Purpose |
 | :--- | :--- |
@@ -278,40 +302,45 @@ This project includes multiple runtime optimizations for Kaggle & Colab environm
 
 ---
 
-# 🙌 Credits
+## 🙌 Credits
 
-## Real-ESRGAN
-https://github.com/xinntao/Real-ESRGAN
+### Real-ESRGAN
 
-## GFPGAN
-https://github.com/TencentARC/GFPGAN
+<https://github.com/xinntao/Real-ESRGAN>
 
-## BasicSR
-https://github.com/XPixelGroup/BasicSR
+### GFPGAN
+
+<https://github.com/TencentARC/GFPGAN>
+
+### BasicSR
+
+<https://github.com/XPixelGroup/BasicSR>
 
 ---
 
-# ☕ Support the Project
+## ☕ Support the Project
 
-If this project has been helpful to you, please consider supporting its development.  
-Your support helps maintain and improve the project, fund future research, and continue building better open-source AI tools for the community.
+If this project has been helpful to you, please consider supporting its
+development. Your support helps maintain and improve the project, fund future
+research, and continue building better open-source AI tools for the community.
 
 Every contribution truly means a lot and helps push this project further. 🚀
 
 | Platform | Link |
 | :--- | :--- |
-| **Trakteer** | https://trakteer.id/pyforge |
-| **Saweria** | https://saweria.co/pyforge |
-| **SociaBuzz** | https://sociabuzz.com/pyforge |
-| **PayPal** | https://www.paypal.com/paypalme/Masyura |
+| **Trakteer** | <https://trakteer.id/pyforge> |
+| **Saweria** | <https://saweria.co/pyforge> |
+| **SociaBuzz** | <https://sociabuzz.com/pyforge> |
+| **PayPal** | <https://www.paypal.com/paypalme/Masyura> |
 
 ---
 
-# ⚖️ License
+## ⚖️ License
 
 This project is licensed under the **MIT License**.
 
-You are free to use, modify, and distribute this project, provided that the original copyright and license notice are included.
+You are free to use, modify, and distribute this project, provided that the
+original copyright and license notice are included.
 
 Copyright (c) 2026 **pyforgedev**
 

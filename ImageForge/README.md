@@ -1,4 +1,4 @@
-# 🖼️ ImageForge - PNG to JPG Converter
+# 🖼️ ImageForge — Batch Image Converter
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1PjLz6x7v4LYImHYauHyOzTcTPXDsBuMV?usp=sharing)
 ![Python](https://img.shields.io/badge/python-3.10+-blue.svg)
@@ -8,55 +8,58 @@
 
 ---
 
-Batch image converter untuk mengubah file **PNG → JPG/JPEG** secara otomatis.
+Batch image converter for automatically converting **PNG → JPG/JPEG** files.
 
-Dirancang khusus untuk workflow batch processing sebelum proses **image upscaling** atau **AI pipeline** lainnya yang membutuhkan format JPG tanpa transparansi.
+Designed specifically for batch processing workflows before **image upscaling**
+or other **AI pipelines** that require JPG format without transparency.
 
---- 
+---
 
 ## ✨ Features
 
--   📂 **Batch PNG Conversion**: Konversi banyak file PNG sekaligus ke JPG atau kembali ke PNG.
--   🎯 **Preserve Filename**: Nama file asli dipertahankan, hanya ekstensinya yang diubah.
--   ⚙️ **Adjustable JPEG Quality**: Kontrol kualitas kompresi untuk output JPG (10-100).
--   📦 **Automatic Output Folder**: Hasil konversi disimpan dalam folder terpisah untuk menjaga kerapian.
--   🚀 **Fast Processing**: Dioptimalkan untuk pemrosesan gambar yang cepat.
--   🖼️ **Transparent PNG to JPG Handling**: Secara otomatis mengisi latar belakang transparan (alpha channel) PNG dengan warna putih saat dikonversi ke JPG, cocok untuk workflow AI.
--   🌐 **Gradio Interface**: Antarmuka pengguna yang intuitif dan mudah digunakan melalui Gradio.
--   ☁️ **Colab Optimized**: Dirancang untuk berjalan mulus di Google Colab dengan tunneling Cloudflare untuk akses publik.
+- 📂 **Batch PNG Conversion**: Convert many PNG files to JPG or back to PNG at once.
+- 🎯 **Preserve Filename**: Original filenames are kept, only the extension changes.
+- ⚙️ **Adjustable JPEG Quality**: Control compression quality for JPG output (10-100).
+- 📦 **Automatic Output Folder**: Converted files are saved in a separate folder to stay organized.
+- 🚀 **Fast Processing**: Optimized for fast image processing.
+- 🖼️ **Transparent PNG to JPG Handling**: Automatically fills transparent PNG backgrounds (alpha channel) with white when converting to JPG, ideal for AI workflows.
+- 🌐 **Gradio Interface**: Intuitive and easy-to-use interface via Gradio.
+- ☁️ **Colab Optimized**: Designed to run smoothly on Google Colab with Cloudflare tunneling for public access.
 
 ---
 
-## 🚀 Cara Menggunakan (Google Colab)
+## 🚀 How to Use (Google Colab)
 
-1.  **Buka di Google Colab**: Klik tombol "Open in Colab" di atas (atau di file `ImageForge.ipynb`).
-2.  **Jalankan Semua Sel**: Jalankan semua sel kode secara berurutan. Anda bisa melakukannya dengan `Runtime` -> `Run all`.
-3.  **Instalasi Dependensi**: Sel pertama akan menginstal pustaka yang diperlukan (`gradio`).
-4.  **Aplikasi Berjalan**: Setelah semua sel dijalankan, Anda akan melihat link Cloudflare di bagian output sel terakhir (biasanya dimulai dengan `https://....trycloudflare.com`).
-5.  **Akses Aplikasi**: Klik link tersebut untuk membuka antarmuka ImageForge di browser Anda.
-6.  **Unggah & Konversi**: Unggah gambar PNG atau JPG Anda, pilih format target dan kualitas (untuk JPG), lalu klik "Mulai Konversi 🚀".
-7.  **Unduh Hasil**: Hasil konversi akan tersedia untuk diunduh sebagai file tunggal atau file ZIP jika Anda mengunggah banyak gambar.
+1. **Open in Google Colab**: Click the "Open in Colab" badge above (or the `ImageForge.ipynb` file).
+2. **Run All Cells**: Run all code cells sequentially via `Runtime` → `Run all`.
+3. **Dependency Installation**: The first cell installs the required libraries (`gradio`).
+4. **Application Running**: After all cells finish, you will see a Cloudflare link in the last cell's output (usually starting with `https://....trycloudflare.com`).
+5. **Access the App**: Click the link to open the ImageForge interface in your browser.
+6. **Upload & Convert**: Upload your PNG or JPG images, select the target format and quality (for JPG), then click "Start Conversion 🚀".
+7. **Download Results**: Converted files are available for download as individual files or a ZIP if you uploaded multiple images.
 
 ---
 
-## ☕ Support Me
+## ☕ Support
 
-Dukungan Anda sangat berarti untuk membantu keberlanjutan riset teknologi dan pengembangan project kreatif lainnya di masa depan.
+Your support helps sustain technology research and future creative open-source projects.
 
-| Platform | Link Dukungan |
+| Platform | Link |
 | :--- | :--- |
-| **Trakteer** | [trakteer.id/pyforge](https://trakteer.id/pyforge) |
-| **Saweria** | [saweria.co/pyforge](https://saweria.co/pyforge) |
-| **SociaBuzz** | [sociabuzz.com/pyforge](https://sociabuzz.com/pyforge) |
-| **PayPal** | [paypal.me/Masyura](https://www.paypal.com/paypalme/Masyura) |
+| **Trakteer** | <https://trakteer.id/pyforge> |
+| **Saweria** | <https://saweria.co/pyforge> |
+| **SociaBuzz** | <https://sociabuzz.com/pyforge> |
+| **PayPal** | <https://www.paypal.com/paypalme/Masyura> |
 
 ---
 
-## ⚖️ Lisensi
+## ⚖️ License
 
-Project ini dilisensikan di bawah **MIT License**. Anda bebas menggunakan, mengubah, dan mendistribusikan kode ini untuk keperluan pribadi maupun komersial.
+This project is licensed under the **MIT License**.
+You are free to use, modify, and distribute this code for personal or commercial purposes.
 
-Copyright (c) 2026 **masyuraC7**
+Copyright (c) 2026 **pyforgedev**
 
 ---
-Dibuat dengan ❤️ oleh **masyuraC7** – Full Stack Programmer & Creative Content Creator.
+
+Made with ❤️ by **pyforgedev** — Full Stack Programmer & Creative Content Creator.
